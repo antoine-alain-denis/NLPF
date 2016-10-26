@@ -1,0 +1,6 @@
+<u1>
+    <h2>Projects</h2>
+    {% for project in all_projects %}
+    <li><a href="/tipz/projects/{{ project.id }}/">{{ project.name }}</a></li>
+    {% endfor %}
+</u1>

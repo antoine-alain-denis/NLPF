@@ -1,0 +1,6 @@
+<u1>
+    <h2>Users</h2>
+    {% for user in all_users %}
+    <li><a href="/tipz/users/{{ user.id }}/">{{ user.firstname }} {{ user.lastname }}</a></li>
+    {% endfor %}
+</u1>
