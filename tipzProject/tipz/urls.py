@@ -4,6 +4,6 @@ from tipz import views
 urlpatterns = [
     # /tipz/
     url(r'^$', views.index, name='index'),
-    # /tipz/712/
-    url(r'^(?P<UsersPK>[0-9]+)/$', views.detail, name='detail'),
+    # /tipz/1/
+    url(r'^(?P<UsersId>[0-9]+)/$', views.detail, name='detail'),
 ]
