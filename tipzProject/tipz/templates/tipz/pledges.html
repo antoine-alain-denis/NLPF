@@ -1,0 +1,6 @@
+<u1>
+    <h2>Pledges</h2>
+    {% for pledge in all_pledges %}
+    <li><a href="/tipz/pledges/{{ pledge.id }}/">{{ pledge.title }} {{ pledge.value }}€</a></li>
+    {% endfor %}
+</u1>
