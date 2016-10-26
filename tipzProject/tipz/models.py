@@ -31,4 +31,5 @@ class Pledge(models.Model):
     investor = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.id) + ' ' + self.title + ' ' + str(self.value) + 'EUR ' + self.project.name
+        return str(self.id) + ' ' + self.title + ' ' + str(self.value) + 'EUR '\
+               + self.project.name + ' ' + self.investor.firstname + ' ' + self.investor.lastname

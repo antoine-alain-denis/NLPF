@@ -1,15 +1,15 @@
 <u1>
-    <h2>Users</h2>
+    <h2><li><a href="/tipz/users/">Users</a></li></h2>
     {% for user in all_users %}
     <li><a href="/tipz/users/{{ user.id }}/">{{ user.firstname }} {{ user.lastname }}</a></li>
     {% endfor %}
 
-    <h2>Projects</h2>
+    <h2><li><a href="/tipz/projects/">Projects</a></li></h2>
     {% for project in all_projects %}
     <li><a href="/tipz/projects/{{ project.id }}/">{{ project.name }}</a></li>
     {% endfor %}
 
-    <h2>Pledges</h2>
+    <h2><li><a href="/tipz/pledges/">Pledges</a></li></h2>
     {% for pledge in all_pledges %}
     <li><a href="/tipz/pledges/{{ pledge.id }}/">{{ pledge.title }} {{ pledge.value }}€</a></li>
     {% endfor %}
