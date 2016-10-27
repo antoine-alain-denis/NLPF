@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from datetime import datetime
+from django.core.urlresolvers import reverse
 
 class User(models.Model):
     id = models.AutoField(primary_key=True)
@@ -18,6 +19,9 @@ class Project(models.Model):
     description = models.CharField(max_length=150)
     creationDate = models.DateTimeField(default=datetime.now, blank=True)
     owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('tipz:projectsDetail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return 'id:' + str(self.id) + ' ' + self.name + ' ' + ' ' + self.owner.firstname + ' ' + self.owner.lastname

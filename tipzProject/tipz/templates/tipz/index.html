@@ -1,16 +1,16 @@
-<u1>
-    <h2><li><a href="/tipz/users/">Users</a></li></h2>
-    {% for user in all_users %}
-    <li><a href="/tipz/users/{{ user.id }}/">{{ user.firstname }} {{ user.lastname }}</a></li>
-    {% endfor %}
+{% extends 'tipz/base.html' %}
 
-    <h2><li><a href="/tipz/projects/">Projects</a></li></h2>
-    {% for project in all_projects %}
-    <li><a href="/tipz/projects/{{ project.id }}/">{{ project.name }}</a></li>
-    {% endfor %}
+{% block title %}Tipz Home Page{% endblock %}
+{% block body %}
+    <u1>
+        <h2><li><a href="{% url 'users' %}">Users</a></li></h2>
 
-    <h2><li><a href="/tipz/pledges/">Pledges</a></li></h2>
-    {% for pledge in all_pledges %}
-    <li><a href="/tipz/pledges/{{ pledge.id }}/">{{ pledge.title }} {{ pledge.value }}€</a></li>
-    {% endfor %}
-</u1>
+        <h2><li><a href="{% url 'projects' %}">Projects</a></li></h2>
+        {% for project in object_list %}
+        <li><a href="{% url 'projectsDetail' project.id %}">{{ project.name }}</a></li>
+        {% endfor %}
+
+        <h2><li><a href="{% url 'pledges' %}">Pledges</a></li></h2>
+    </u1>
+{% endblock %}
+

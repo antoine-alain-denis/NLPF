@@ -3,19 +3,20 @@ from tipz import views
 
 urlpatterns = [
     # /tipz/
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.IndexView.as_view(), name='index'),
 
     # /tipz/users/
-    url(r'^users/$', views.users, name='users'),
+    url(r'^users/$', views.UsersView.as_view(), name='users'),
     # /tipz/projects/
-    url(r'^projects/$', views.projects, name='projects'),
+    url(r'^projects/$', views.ProjectsView.as_view(), name='projects'),
     # /tipz/pledges/
-    url(r'^pledges/$', views.pledges, name='pledges'),
+    url(r'^pledges/$', views.PledgesView.as_view(), name='pledges'),
 
     # /tipz/users/1/
-    url(r'^users/(?P<userId>[0-9]+)/$', views.usersDetail, name='usersDetail'),
+    url(r'^users/(?P<pk>[0-9]+)/$', views.UsersDetailView.as_view(), name='usersDetail'),
     # /tipz/projects/1/
-    url(r'^projects/(?P<projectId>[0-9]+)/$', views.projectsDetail, name='projectsDetail'),
+    url(r'^projects/(?P<pk>[0-9]+)/$', views.ProjectsDetailView.as_view(), name='projectsDetail'),
     # /tipz/pledges/1/
-    url(r'^pledges/(?P<pledgeId>[0-9]+)/$', views.pledgesDetail, name='pledgesDetail'),
-]
+    url(r'^pledges/(?P<pk>[0-9]+)/$', views.PledgesDetailView.as_view(), name='pledgesDetail'),
+    # /tipz/projects/add/
+    url(r'^projects/add/$', views.ProjectCreate.as_view(), name='projects-add')]

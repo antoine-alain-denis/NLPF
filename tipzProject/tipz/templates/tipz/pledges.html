@@ -1,6 +1,13 @@
-<u1>
+{% extends 'tipz/base.html' %}
+
+{% block title %}Tipz Pledges{% endblock %}
+
+{% block body %}
+    <u1>
     <h2>Pledges</h2>
-    {% for pledge in all_pledges %}
-    <li><a href="/tipz/pledges/{{ pledge.id }}/">{{ pledge.title }} {{ pledge.value }}€</a></li>
+    {% for pledge in object_list %}
+    <li><a href="{% url 'pledgesDetail' pledge.id %}">{{ pledge.title }} {{ pledge.value }}€</a></li>
     {% endfor %}
 </u1>
+{% endblock %}
+
