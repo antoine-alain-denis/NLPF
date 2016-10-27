@@ -18,5 +18,10 @@ urlpatterns = [
     url(r'^projects/(?P<pk>[0-9]+)/$', views.ProjectsDetailView.as_view(), name='projectsDetail'),
     # /tipz/pledges/1/
     url(r'^pledges/(?P<pk>[0-9]+)/$', views.PledgesDetailView.as_view(), name='pledgesDetail'),
+
+    # /tipz/users/add/
+    url(r'^users/add/$', views.UserCreate.as_view(), name='users-add'),
     # /tipz/projects/add/
-    url(r'^projects/add/$', views.ProjectCreate.as_view(), name='projects-add')]
+    url(r'^projects/add/$', views.ProjectCreate.as_view(), name='projects-add'),
+    # /tipz/pledges/add/
+    url(r'^pledges/add/$', views.PledgeCreate.as_view(), name='pledges-add')]

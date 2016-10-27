@@ -10,6 +10,9 @@ class User(models.Model):
     firstname = models.CharField(max_length=15)
     password = models.CharField(max_length=15)
 
+    def get_absolute_url(self):
+        return reverse('tipz:usersDetail', kwargs={'pk': self.pk})
+
     def __str__(self):
         return 'id:' + str(self.id) + ' ' + self.firstname + ' ' + self.lastname
 
@@ -33,6 +36,9 @@ class Pledge(models.Model):
     value = models.PositiveIntegerField(default=1)
     project = models.ForeignKey(Project, null=False, default=0, on_delete=models.CASCADE)
     investor = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('tipz:pledgesDetail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return str(self.id) + ' ' + self.title + ' ' + str(self.value) + 'EUR '\

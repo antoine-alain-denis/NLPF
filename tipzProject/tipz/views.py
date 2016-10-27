@@ -49,6 +49,14 @@ class PledgesDetailView(generic.DetailView):
     def get_queryset(self):
         return Pledge.objects.all()
 
+class UserCreate(CreateView):
+    model = User
+    fields = ['email', 'lastname', 'firstname', 'password']
+
 class ProjectCreate(CreateView):
     model = Project
     fields = ['name', 'description', 'creationDate', 'owner']
+
+class PledgeCreate(CreateView):
+    model = Pledge
+    fields = ['title', 'description', 'value', 'project', 'investor']
