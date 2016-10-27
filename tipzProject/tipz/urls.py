@@ -4,7 +4,8 @@ from tipz import views
 urlpatterns = [
     # /tipz/
     url(r'^$', views.IndexView.as_view(), name='index'),
-
+    # /tipz/
+    url(r'^register/$', views.UserFormView.as_view(), name='register'),
     # /tipz/users/
     url(r'^users/$', views.UsersView.as_view(), name='users'),
     # /tipz/projects/
@@ -24,4 +25,16 @@ urlpatterns = [
     # /tipz/projects/add/
     url(r'^projects/add/$', views.ProjectCreate.as_view(), name='projects-add'),
     # /tipz/pledges/add/
-    url(r'^pledges/add/$', views.PledgeCreate.as_view(), name='pledges-add')]
+    url(r'^pledges/add/$', views.PledgeCreate.as_view(), name='pledges-add'),
+
+    # /tipz/users/1/edit/
+    url(r'^users/(?P<pk>[0-9]+)/edit/$', views.UserUpdate.as_view(), name='users-update'),
+    # /tipz/projects/1/edit/
+    url(r'^projects/(?P<pk>[0-9]+)/edit/$', views.ProjectUpdate.as_view(), name='projects-update'),
+    # /tipz/pledges/1/edit/
+    url(r'^pledges/(?P<pk>[0-9]+)/edit/$', views.PledgeUpdate.as_view(), name='pledges-update'),
+
+    # /tipz/projects/1/delete/
+    url(r'^projects/(?P<pk>[0-9]+)/delete/$', views.ProjectDelete.as_view(), name='projects-delete'),
+    # /tipz/pledges/1/delete/
+    url(r'^pledges/(?P<pk>[0-9]+)/delete/$', views.PledgeDelete.as_view(), name='pledges-delete')]
