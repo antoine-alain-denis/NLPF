@@ -30,7 +30,9 @@
         <!-- Items -->
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
-                <li class="{% block tipz_create %}{% endblock %}"><a href="{% url 'tipz:projects-add' %}"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>&nbsp; Create a Tipz</a></li>
+                {% if user.is_authenticated %}
+                    <li class="{% block tipz_create %}{% endblock %}"><a href="{% url 'tipz:projects-add' %}"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>&nbsp; Create a Tipz</a></li>
+                {% endif %}
                 <li class="{% block best_tipzs %}{% endblock %}"><a href="{% url 'tipz:projects' %}"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp; The best Tipzs</a></li>
                 {% if user.is_authenticated %}
                     <li class="{% block logout %}{% endblock %}"><a href="{% url 'tipz:logout' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Logout</a></li>
