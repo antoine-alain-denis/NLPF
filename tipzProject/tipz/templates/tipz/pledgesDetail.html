@@ -12,6 +12,9 @@
                     <p>Description: {{ pledge.description }}</p>
                     <p>Price per month: {{ pledge.value }}€</p>
                     <p>Project: {{ pledge.project.name }}</p>
+                    {% if user != pledge.project.owner %}
+                        <li class="{% block pledge_create %}{% endblock %}"><a href="{% url 'tipz:pledges-add' %}"><span class="glyphicon glyphicon-eur" aria-hidden="true"></span>&nbsp; Invest on Pledge</a></li>
+                    {% endif %}
                 </div>
             </div>
         </div>
