@@ -3,5 +3,67 @@
 {% block title %}Tipz User Detail{% endblock %}
 
 {% block body %}
-    {{ user }}
+
+<u1>
+    <h2>User: {{ user.username }}</h2>
+
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>First name: {{ user.first_name }}</p>
+                    <p>Last Name: {{ user.last_name }}</p>
+                    <p>email: {{ user.email }}</p>
+                </div>
+            </div>
+        </div>
+   </u1>
+<br>
+
+
+
+<HR color="red">
+
+
+ <u1>
+    <h2>Projects I invested in:</h2>
+     {% for project in Projects %}
+     <u1>
+    {% if project.owner.username == user.username %}
+    <h2>Project: {{ project.name }}</h2>
+
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>Created by {{ project.owner }}</p>
+                    <p>Date of creation: {{ project.creationDate }}</p>
+                    <p>Description: {{ project.description }}</p>
+                </div>
+            </div>
+        </div>
+ </u1>
+
+<br>
+
+ <u2>
+    <h2>Pledges related</h2>
+     {% for pledge in Pledges %}
+     {% if pledge.project.id == project.id %}
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>{{ pledge.name }}</h3>
+                    <p>Description: {{ pledge.description }}</p>
+                    <p>Price per month: {{ pledge.value }}€</p>
+                    <p>Project: {{ pledge.project.name }}</p>
+                </div>
+            </div>
+        </div>
+     {% endif %}
+     {% endfor %}
+   </u2>
+     {% endif %}
+     <HR color="red">
+     {% endfor %}
+   </u1>
+
 {% endblock %}
