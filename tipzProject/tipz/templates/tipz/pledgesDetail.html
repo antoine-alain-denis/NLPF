@@ -3,6 +3,18 @@
 {% block title %}Tipz Pledge Detail{% endblock %}
 
 {% block body %}
-    {{ pledge }}
+    <h2>Pledges</h2>
+
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>{{ pledge.name }}</h3>
+                    <p>Description: {{ pledge.description }}</p>
+                    <p>Price per month: {{ pledge.value }}€</p>
+                    <p>Project: {{ pledge.project.name }}</p>
+                </div>
+            </div>
+        </div>
+
 {% endblock %}
 

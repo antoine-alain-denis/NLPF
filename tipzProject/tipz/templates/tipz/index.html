@@ -2,15 +2,22 @@
 
 {% block title %}Tipz Home Page{% endblock %}
 {% block body %}
-    <u1>
-        <h2><li><a href="{% url 'users' %}">Users</a></li></h2>
+<u1>
+    <h2>Projects</h2>
+    {% for project in object_list %}
 
-        <h2><li><a href="{% url 'projects' %}">Projects</a></li></h2>
-        {% for project in object_list %}
-        <li><a href="{% url 'projectsDetail' project.id %}">{{ project.name }}</a></li>
-        {% endfor %}
-
-        <h2><li><a href="{% url 'pledges' %}">Pledges</a></li></h2>
-    </u1>
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>{{ project.name }}</h3>
+                    <p>Created by {{ project.owner }}</p>
+                    <p>Date of creation: {{ project.creationDate }}</p>
+                    <p>Description: {{ project.description }}</p>
+                    <a href="{% url 'projectsDetail' project.id %}"> Invest in {{ project.name }}</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</u1>
 {% endblock %}
 

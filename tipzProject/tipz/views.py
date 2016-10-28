@@ -49,6 +49,11 @@ class ProjectsDetailView(generic.DetailView):
     def get_queryset(self):
         return Project.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super(ProjectsDetailView, self).get_context_data(**kwargs)
+        context['Pledges'] = Pledge.objects.all()
+        return context
+
 class PledgesDetailView(generic.DetailView):
     model = Pledge
     template_name = 'tipz/pledgesDetail.html'
