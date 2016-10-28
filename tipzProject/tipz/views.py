@@ -60,6 +60,10 @@ class ProjectCreate(CreateView):
     model = Project
     fields = ['name', 'description', 'creationDate', 'owner']
 
+    def post(self, request):
+        if not request.user.is_authenticated:
+            return redirect('tipz:login')
+
 class ProjectUpdate(UpdateView):
     model = Project
     fields = ['name', 'description', 'creationDate', 'owner']
@@ -109,7 +113,6 @@ class RegisterFormView(View):
 class LogoutFormView(View):
     form_class = LoginForm
     template_name = 'tipz/login_form.html'
-
 
     def get(self, request):
         logout(request)
