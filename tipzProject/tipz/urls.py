@@ -20,15 +20,11 @@ urlpatterns = [
     # /tipz/pledges/1/
     url(r'^pledges/(?P<pk>[0-9]+)/$', views.PledgesDetailView.as_view(), name='pledgesDetail'),
 
-    # /tipz/users/add/
-    url(r'^users/add/$', views.UserCreate.as_view(), name='users-add'),
     # /tipz/projects/add/
     url(r'^projects/add/$', views.ProjectCreate.as_view(), name='projects-add'),
     # /tipz/pledges/add/
     url(r'^pledges/add/$', views.PledgeCreate.as_view(), name='pledges-add'),
 
-    # /tipz/users/1/edit/
-    url(r'^users/(?P<pk>[0-9]+)/edit/$', views.UserUpdate.as_view(), name='users-update'),
     # /tipz/projects/1/edit/
     url(r'^projects/(?P<pk>[0-9]+)/edit/$', views.ProjectUpdate.as_view(), name='projects-update'),
     # /tipz/pledges/1/edit/

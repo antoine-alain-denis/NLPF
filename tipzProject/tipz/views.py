@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.views.generic import View
 from tipz.models import Pledge
 from tipz.models import Project
-from tipz.models import User
+from django.contrib.auth.models import User
 from tipz.forms import UserForm
 
 class IndexView(generic.ListView):
@@ -53,14 +53,6 @@ class PledgesDetailView(generic.DetailView):
 
     def get_queryset(self):
         return Pledge.objects.all()
-
-class UserCreate(CreateView):
-    model = User
-    fields = ['email', 'lastname', 'firstname', 'password']
-
-class UserUpdate(UpdateView):
-    model = User
-    fields = ['email', 'lastname', 'firstname', 'password']
 
 class ProjectCreate(CreateView):
     model = Project

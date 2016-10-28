@@ -2,19 +2,8 @@ from __future__ import unicode_literals
 from django.db import models
 from datetime import datetime
 from django.core.urlresolvers import reverse
-
-class User(models.Model):
-    id = models.AutoField(primary_key=True)
-    email = models.CharField(max_length=42)
-    lastname = models.CharField(max_length=15)
-    firstname = models.CharField(max_length=15)
-    password = models.CharField(max_length=15)
-
-    def get_absolute_url(self):
-        return reverse('tipz:usersDetail', kwargs={'pk': self.pk})
-
-    def __str__(self):
-        return 'id:' + str(self.id) + ' ' + self.firstname + ' ' + self.lastname
+from django import forms
+from django.contrib.auth.models import User
 
 class Project(models.Model):
     id = models.AutoField(primary_key=True)
@@ -27,7 +16,7 @@ class Project(models.Model):
         return reverse('tipz:projectsDetail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return 'id:' + str(self.id) + ' ' + self.name + ' ' + ' ' + self.owner.firstname + ' ' + self.owner.lastname
+        return 'id:' + str(self.id) + ' projectName: ' + self.name + ' ' + ' owner: ' + self.owner.username
 
 class Pledge(models.Model):
     id = models.AutoField(primary_key=True)
@@ -41,5 +30,5 @@ class Pledge(models.Model):
         return reverse('tipz:pledgesDetail', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return str(self.id) + ' ' + self.title + ' ' + str(self.value) + 'EUR '\
-               + self.project.name + ' ' + self.investor.firstname + ' ' + self.investor.lastname
+        return 'id: ' + str(self.id) + ' pledgeTitle: ' + self.title + ' value: ' + str(self.value) + 'EUR '\
+               + ' projectName: ' + self.project.name + ' investor: ' + self.investor.username
