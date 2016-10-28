@@ -105,17 +105,18 @@ class RegisterFormView(View):
 
         return render(request, self.template_name, {'form': form})
 
-class LoginFormView(View):
+class LogoutFormView(View):
     form_class = LoginForm
     template_name = 'tipz/login_form.html'
 
-    def logout_user(request):
-        logout(request)
-        form = UserForm(request.POST or None)
-        context = {
-            "form": form,
-        }
-        return render(request, 'tipz/login_form.html', context)
+    def get(self, request):
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form})
+
+
+class LoginFormView(View):
+    form_class = LoginForm
+    template_name = 'tipz/login_form.html'
 
     def get(self, request):
         form = self.form_class(None)

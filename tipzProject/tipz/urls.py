@@ -6,6 +6,10 @@ urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     # /tipz/login
     url(r'^login/$', views.LoginFormView.as_view(), name='login'),
+
+    # /tipz/logout
+    url(r'^logout/$', views.LogoutFormView.as_view(), name='logout'),
+
     # /tipz/register
     url(r'^register/$', views.RegisterFormView.as_view(), name='register'),
     # /tipz/users/
