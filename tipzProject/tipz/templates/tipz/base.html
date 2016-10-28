@@ -40,6 +40,10 @@
                     <li class="{% block register %}{% endblock %}"><a href="{% url 'tipz:register' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Register</a></li>
                     <li class="{% block login %}{% endblock %}"><a href="{% url 'tipz:login' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Login</a></li>
                 {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="{% block my_page %}{% endblock %}"><a href="{% url 'tipz:usersDetail' user.id %}"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>&nbsp; My Page</a></li>
+                {% endif %}
+
             </ul>
         </div>
 
