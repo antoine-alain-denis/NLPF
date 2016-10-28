@@ -123,14 +123,12 @@ class LoginFormView(View):
 
     def post(self, request):
         form = self.form_class(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
 
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect('tipz:index')
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return redirect('tipz:index')
         return render(request, self.template_name, {'form': form})
