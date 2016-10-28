@@ -3,12 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Tipz{% endblock %}</title>
-    <!-- Load the path to your static files -->
     {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{% static 'tipz/style.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
 </head>
 <body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- Header -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'tipz:index' %}">Tipz</a>
+        </div>
+
+        <!-- Items -->
+        <div class="collapse navbar-collapse" id="topNavBar">
+            <ul class="nav navbar-nav">
+                <li class="{% block tipz_create %}{% endblock %}"><a href="{% url 'tipz:projects-add' %}"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>&nbsp; Create a Tipz</a></li>
+                <li class="{% block best_tipzs %}{% endblock %}"><a href="{% url 'tipz:projects' %}"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp; The best Tipzs</a></li>
+                <li class="{% block register %}{% endblock %}"><a href="{% url 'tipz:register' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Register</a></li>
+                <li class="{% block login %}{% endblock %}"><a href="{% url 'tipz:login' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Login</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{% url 'tipz:register' %}">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
 {% block body %}
 {% endblock %}
 </body>

@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'tipzdb',
         'USER': 'ja',
-        'PASSWORD': 'argon42',
+	'PASSWORD': 'argon42',
         'HOST': 'localhost',
         'PORT': '',
     }
