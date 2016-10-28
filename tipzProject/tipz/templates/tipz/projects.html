@@ -11,6 +11,8 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h3>{{ project.name }}?</h3>
+                    <p>Created by {{ project.owner }}</p>
+                    <p>Date of creation: {{ project.creationDate }}</p>
                     <p>{{ project.name }} is {{ project.description }}</p>
                     <li><a href="{% url 'projectsDetail' project.id %}"> Invest in {{ project.name }}</a></li>
                 </div>
