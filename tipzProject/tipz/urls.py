@@ -4,8 +4,10 @@ from tipz import views
 urlpatterns = [
     # /tipz/
     url(r'^$', views.IndexView.as_view(), name='index'),
+    # /tipz/login
+    url(r'^login/$', views.LoginFormView.as_view(), name='login'),
     # /tipz/register
-    url(r'^register/$', views.UserFormView.as_view(), name='register'),
+    url(r'^register/$', views.RegisterFormView.as_view(), name='register'),
     # /tipz/users/
     url(r'^users/$', views.UsersView.as_view(), name='users'),
     # /tipz/projects/

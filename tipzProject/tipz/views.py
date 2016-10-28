@@ -8,6 +8,7 @@ from tipz.models import Pledge
 from tipz.models import Project
 from django.contrib.auth.models import User
 from tipz.forms import UserForm
+from tipz.forms import LoginForm
 
 class IndexView(generic.ListView):
     template_name = 'tipz/index.html'
@@ -78,7 +79,7 @@ class PledgeDelete(DeleteView):
     model = Pledge
     success_url = reverse_lazy('tipz:index')
 
-class UserFormView(View):
+class RegisterFormView(View):
     form_class = UserForm
     template_name = 'tipz/register_form.html'
 
@@ -102,4 +103,34 @@ class UserFormView(View):
                     login(request, user)
                     return redirect('tipz:index')
 
+        return render(request, self.template_name, {'form': form})
+
+class LoginFormView(View):
+    form_class = LoginForm
+    template_name = 'tipz/login_form.html'
+
+    def logout_user(request):
+        logout(request)
+        form = UserForm(request.POST or None)
+        context = {
+            "form": form,
+        }
+        return render(request, 'tipz/login_form.html', context)
+
+    def get(self, request):
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('tipz:index')
         return render(request, self.template_name, {'form': form})
