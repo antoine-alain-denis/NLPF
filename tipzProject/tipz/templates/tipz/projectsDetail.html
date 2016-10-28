@@ -12,6 +12,10 @@
                     <p>Created by {{ project.owner }}</p>
                     <p>Date of creation: {{ project.creationDate }}</p>
                     <p>Description: {{ project.description }}</p>
+
+                    {% if user == project.owner %}
+                        <li class="{% block pledge_create %}{% endblock %}"><a href="{% url 'tipz:pledges-add' %}"><span class="glyphicon glyphicon-eur" aria-hidden="true"></span>&nbsp; Add Pledge</a></li>
+                    {% endif %}
                 </div>
             </div>
         </div>
