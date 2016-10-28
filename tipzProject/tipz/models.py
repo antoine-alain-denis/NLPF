@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Project(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=15)
-    description = models.CharField(max_length=150)
+    description = models.CharField(max_length=150, blank=True)
     creationDate = models.DateTimeField(default=datetime.now, blank=True)
     owner = models.ForeignKey(User, null=False, on_delete=models.CASCADE)
 
@@ -21,14 +21,14 @@ class Project(models.Model):
 class Pledge(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=15)
-    description = models.CharField(max_length=150)
+    description = models.CharField(max_length=150, blank=True)
     value = models.PositiveIntegerField(default=1)
     project = models.ForeignKey(Project, null=False, default=0, on_delete=models.CASCADE)
-    investor = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    investor = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
         return reverse('tipz:pledgesDetail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return 'id: ' + str(self.id) + ' pledgeTitle: ' + self.title + ' value: ' + str(self.value) + 'EUR '\
-               + ' projectName: ' + self.project.name + ' investor: ' + self.investor.username
+               + ' projectName: ' + self.project.name
