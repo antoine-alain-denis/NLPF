@@ -30,14 +30,15 @@
         <!-- Items -->
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
-                <li class="{% block albums_active %}{% endblock %}"><a href="{% url 'tipz:projects-add' %}"><span class="glyphicon glyphicon-cd" aria-hidden="true"></span>&nbsp; Créer mon projet</a></li>
-                <li class="{% block songs_active %}{% endblock %}"><a href="{% url 'tipz:projects' %}"><span class="glyphicon glyphicon-music" aria-hidden="true"></span>&nbsp; Les meilleurs Projets</a></li>
-                <li class="{% block songs_active %}{% endblock %}"><a href="{% url 'tipz:projects' %}"><span class="glyphicon glyphicon-music" aria-hidden="true"></span>&nbsp; Se connecter</a></li>
+                <li class="{% block tipz_create %}{% endblock %}"><a href="{% url 'tipz:projects-add' %}"><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>&nbsp; Create a Tipz</a></li>
+                <li class="{% block best_tipzs %}{% endblock %}"><a href="{% url 'tipz:projects' %}"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp; The best Tipzs</a></li>
+                <li class="{% block register %}{% endblock %}"><a href="{% url 'tipz:register' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Register</a></li>
+                <li class="{% block login %}{% endblock %}"><a href="{% url 'tipz:login' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Login</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="{% url 'tipz:logout_user' %}">
-                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Se deconnecter
+                    <a href="{% url 'tipz:register' %}">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Logout
                     </a>
                 </li>
             </ul>
