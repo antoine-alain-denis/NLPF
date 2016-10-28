@@ -32,7 +32,9 @@
                     <p>Description: {{ pledge.description }}</p>
                     <p>Price per month: {{ pledge.value }}€</p>
                     <p>Project: {{ pledge.project.name }}</p>
+                    {% if user.is_authenticated %}
                     <a href="{% url 'pledgesDetail' pledge.id %}"> Invest in {{ pledge.name }}</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
