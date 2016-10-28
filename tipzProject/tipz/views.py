@@ -9,6 +9,7 @@ from tipz.models import Project
 from django.contrib.auth.models import User
 from tipz.forms import UserForm
 from tipz.forms import LoginForm
+from django.contrib.auth import logout
 
 class IndexView(generic.ListView):
     template_name = 'tipz/index.html'
@@ -109,7 +110,9 @@ class LogoutFormView(View):
     form_class = LoginForm
     template_name = 'tipz/login_form.html'
 
+
     def get(self, request):
+        logout(request)
         form = self.form_class(None)
         return render(request, self.template_name, {'form': form})
 
